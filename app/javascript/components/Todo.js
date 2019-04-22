@@ -2,7 +2,7 @@ import React from "react";
 import { useFetch } from "./utils";
 
 function Todos() {
-  const { loading, data } = useFetch("https://jsonplaceholder.typicode.com/todos/1");
+  const { loading, data } = useFetch("https://jsonplaceholder.typicode.com/todos");
 
   return (
     <div>
@@ -10,8 +10,9 @@ function Todos() {
         <div>Loading...</div>
       ) : (
         <ul>
-          <li>{data.id}</li>
-          <li>{data.title}</li>
+          {data.map(task => (
+            <li key={task.id}>{task.title}</li>
+          ))}
         </ul>
       )}
     </div>
